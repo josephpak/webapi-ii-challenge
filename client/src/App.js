@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 import List from './components/List'
 import AddUserForm from './components/AddUserForm';
+import DropDown from './components/DropDown';
 
 const AppWrapper = styled.div`
   display: flex;
@@ -22,6 +23,7 @@ class App extends Component {
   render() {
     return (
       <AppWrapper>
+        <DropDown />
         <AddUserForm/>
         {this.props.fetching ? (<p>Loading...</p>) : 
         (<List 

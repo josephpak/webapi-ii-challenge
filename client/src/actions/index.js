@@ -15,6 +15,10 @@ import {
   UPDATE_POST_START,
   UPDATE_POST_SUCCESS,
   UPDATE_POST_FAILURE,
+
+  SORT_POSTS_START,
+  SORT_POSTS_SUCCESS,
+  SORT_POSTS_FAILURE,
 } from "../types";
 
 // Action creator function that uses thunk
@@ -91,4 +95,33 @@ export const createPost = post =>  dispatch => {
         payload: res.data
       })
     })
+    .catch(err => {
+			dispatch({
+				type: CREATE_POST_FAILURE,
+				payload: err
+			});
+		});
+}
+
+export const sortPosts = sortParam => dispatch => {
+  dispatch({
+    type: SORT_POSTS_START
+  })
+
+  // const param = JSON.parse(sortParam)
+
+  axios
+    .get(`http://localhost:4000/api/posts?sortby=${sortParam}`)
+    .then(res => {
+      dispatch({
+        type: SORT_POSTS_SUCCESS,
+        payload: res.data
+      })
+    })
+    .catch(err => {
+			dispatch({
+				type: SORT_POSTS_FAILURE,
+				payload: err
+			});
+		});
 }

@@ -14,6 +14,10 @@ import {
     UPDATE_POST_START,
     UPDATE_POST_SUCCESS,
     UPDATE_POST_FAILURE,
+
+    SORT_POSTS_START,
+    SORT_POSTS_SUCCESS,
+    SORT_POSTS_FAILURE,
 } from "../types";
 
 const initialState = {
@@ -110,7 +114,26 @@ export const reducer = (state = initialState, action) => {
         fetching: false
       };    
   
-
+    case SORT_POSTS_START:
+      return {
+        ...state,
+        fetching: true,
+        error: null
+      };
+    case SORT_POSTS_SUCCESS:
+      return {
+        ...state,
+        fetching: false,
+        error: null,
+        posts: action.payload  
+      };
+    case SORT_POSTS_FAILURE:
+      return {
+        ...state,
+        error: "Sort Failure",
+        fetching: false
+      };  
+      
     default:
       return state;
   }
