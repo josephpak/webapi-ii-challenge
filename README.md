@@ -67,11 +67,11 @@ Configure the API to handle to the following routes:
 
 When the client makes a `POST` request to `/api/posts`:
 
-- If the request body is missing the `title` or `contents` property:
+- [x] If the request body is missing the `title` or `contents` property:
 
-  - cancel the request.
-  - respond with HTTP status code `400` (Bad Request).
-  - return the following JSON response: `{ errorMessage: "Please provide title and contents for the post." }`.
+  - [x] cancel the request.
+  - [x] respond with HTTP status code `400` (Bad Request).
+  - [x] return the following JSON response: `{ errorMessage: "Please provide title and contents for the post." }`.
 
 - [x] If the information about the _post_ is valid:
 
